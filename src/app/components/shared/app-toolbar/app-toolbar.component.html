@@ -1,0 +1,16 @@
+<mat-toolbar>
+    <span>
+      <a routerLink="/">
+        <img [src]="icon" />
+      </a>
+    </span>
+    <span class="spacer"></span>
+    <ul>
+      <li *ngIf="!registrado">
+        <a (click)="autorizar()" mat-button> ENTRAR </a>
+      </li>
+      <li *ngIf="registrado">
+        <a (click)="desloguear()" mat-button> SALIR </a>
+      </li>
+    </ul>
+  </mat-toolbar>

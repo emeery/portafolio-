@@ -13,7 +13,6 @@ import { SharedModule } from '../components/shared/shared.module';
   imports: [
     CommonModule,
     BrowserAnimationsModule,
-    SharedModule,
     RouterModule,
     MaterialModule,
   ],

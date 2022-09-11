@@ -4,10 +4,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/auth/login/login.component';
 import { MaterialModule } from './core/material.module';
 import { SharedModule } from './components/shared/shared.module';
 import { AuthModule } from './components/auth/auth.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +18,7 @@ import { AuthModule } from './components/auth/auth.module';
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
+    CoreModule,
     AuthModule,
     SharedModule
     
