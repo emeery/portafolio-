@@ -1,0 +1,14 @@
+@import "src/styles/vars";
+.mat-dialog-title {
+  color: lightblue;
+  font-family: $osw;
+}
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: lightblue !important;
+}
+
+.placeholder {
+  color: orange;
+}

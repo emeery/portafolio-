@@ -1,4 +1,4 @@
-// @import "../../../styles/vars";
+@import "src/styles/vars";
 ul {
   list-style: none;
   padding: 0;
@@ -6,11 +6,11 @@ ul {
   display: flex;
 }
 
-// a {
-//   text-decoration: none;
-//   color: $mg;
-//   font-family: $osw;
-// }
+a {
+  text-decoration: none;
+  color: $mg;
+  font-family: $osw;
+}
 
 .spacer {
   flex: 1 1 auto;

@@ -1,1 +1,30 @@
-<p>login works!</p>
+<app-progress-bar *ngIf="bar"></app-progress-bar>
+<div>
+    <form [formGroup]="form" (submit)="ingreso()" method="post">
+      <h1 mat-dialog-title>INGRESAR</h1>
+      <mat-dialog-content>
+        <mat-form-field class="example-full-width">
+          <input
+            formControlName="email"
+            matInput
+            autocomplete="off"
+            style="color: cadetblue;"
+          />
+          <mat-placeholder class="placeholder">Ingresa un correo</mat-placeholder>
+          <mat-error *ngIf="f['email'].errors?.['required']">
+            Ingresa un correo valido
+          </mat-error>
+        </mat-form-field>
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button
+          type="submit"
+          [disabled]="form.invalid"
+          mat-flat-button
+          color="primary"
+        >
+          Entrar
+        </button>
+      </mat-dialog-actions>
+    </form>
+  </div>
