@@ -57,6 +57,7 @@ export class AuthService {
       )
       .subscribe({
         next: (c: any) => {
+          console.log('cc',c)
           const token = c['token'];
           if (token) {
             this.registrado = true;
