@@ -1,22 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~material-icons/iconfont/material-icons.css';
-@import "./app/styles/vars";
-html, body { height: 100%; }
+@import "~material-icons/iconfont/material-icons.css";
+// @import "./app/styles/vars";
+html,
 body {
-   margin: 0; background: #060817;
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: #060817;
 }
 
 .mat-toolbar {
-    background: #232037;
+  background: #232037;
 }
 
 .mat-dialog-container {
-    background-color: #292f33 !important;
+  background-color: #292f33 !important;
 }
 
-.black-snackbar {
-    background: #00195c;
-    color: whitesmoke;
-    font-family: $osw !important;
-
-}
+// .black-snackbar {
+//   background: #00195c;
+//   color: whitesmoke;
+//   font-family: $osw !important;
+// }
