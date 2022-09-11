@@ -1,1 +1,81 @@
-<p>profile works!</p>
+<!-- <app-toolbar></app-toolbar> -->
+<!-- <mat-card  id="not" *ngIf=" bar" [@fadeInOut] 
+  >Bienvenido a mi Portafolio
+
+  <button (click)="hideBar()" mat-button>
+    <mat-icon>cancel</mat-icon>
+  </button>
+</mat-card> -->
+<div class="container"></div>
+<div class="avatar"></div>
+<mat-card>
+  <div>
+    <p class="name">GERARDO MANUEL BAUTISTA</p>
+    <p>DESARROLLADOR FRONT-END ANGULAR</p>
+  </div>
+  <div>
+    <mat-chip-list>
+      <mat-chip class="chip-ang">Angular+2</mat-chip>
+      <mat-chip class="chip-node">NodeJS</mat-chip>
+      <mat-chip class="chip-ts">TypeScript</mat-chip>
+      <mat-chip class="chip-rx">RxJS</mat-chip>
+      <mat-chip class="chip-git">Git</mat-chip>
+    </mat-chip-list>
+  </div>
+</mat-card>
+<div class="profession">
+  <mat-drawer-container class="drawer-container">
+    <mat-drawer mode="side" opened>
+      <div class="vertical-menu">
+        <a routerLink="about">
+          <svg
+            routerLinkActive="active"
+            class="svg"
+            width="30px"
+            height="30px"
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19.75,15.67a6,6,0,1,0-7.51,0A11,11,0,0,0,5,26v1H27V26A11,11,0,0,0,19.75,15.67ZM12,11a4,4,0,1,1,4,4A4,4,0,0,1,12,11ZM7.06,25a9,9,0,0,1,17.89,0Z"
+              fill="currentColor"
+            />
+          </svg>
+        </a>
+        <a routerLink="portafolio">
+          <svg
+            routerLinkActive="active"
+            class="svg"
+            width="30px"
+            height="30px"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20.5,5H17A3.5,3.5,0,0,0,13.5,2h-3A3.5,3.5,0,0,0,7.05,5H3.5A1.5,1.5,0,0,0,2,6.5v9a.5.5,0,0,0,.5.5H3v4.5A1.5,1.5,0,0,0,4.5,22h15A1.5,1.5,0,0,0,21,20.5V16h.5a.5.5,0,0,0,.5-.5v-9A1.5,1.5,0,0,0,20.5,5Zm-10-2h3A2.5,2.5,0,0,1,16,5H8.05A2.5,2.5,0,0,1,10.5,3ZM20,20.5a.5.5,0,0,1-.5.5H4.5a.5.5,0,0,1-.5-.5V16h6v1.5a.5.5,0,0,0,.5.5h3a.5.5,0,0,0,.5-.5V16h6ZM11,17V14h2v3Zm10-2H14V13.5a.5.5,0,0,0-.5-.5h-3a.5.5,0,0,0-.5.5V15H3V6.5A.5.5,0,0,1,3.5,6h17a.5.5,0,0,1,.5.5Z"
+              fill="currentColor"
+            />
+          </svg>
+        </a>
+        <a routerLink="contact">
+          <svg
+            routerLinkActive="active"
+            class="svg"
+            width="30px"
+            height="30px"
+            viewBox="0 0 1024 1024"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M744 62H280c-35.3 0-64 28.7-64 64v768c0 35.3 28.7 64 64 64h464c35.3 0 64-28.7 64-64V126c0-35.3-28.7-64-64-64zm-8 824H288V134h448v752zM472 784a40 40 0 1 0 80 0 40 40 0 1 0-80 0z"
+              fill="currentColor"
+            />
+          </svg>
+        </a>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

@@ -1,0 +1,26 @@
+@import "src/styles/vars";
+.container {
+    width: 100%;
+    height: 100vh;
+}
+
+.child {
+    background: #060817;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    display: table;
+    text-align: center;
+    height: 20%;
+    top: 50%;
+}
+
+span {
+    display: table-cell;
+    vertical-align: middle;
+    font-family: $osw;
+    font-size: 7vw;
+    color: wheat;
+}

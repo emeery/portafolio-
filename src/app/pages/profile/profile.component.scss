@@ -1,0 +1,141 @@
+@import "src/styles/vars";
+.container {
+  width: 100%;
+  height: 400px;
+  background: url("../../../assets/images/wall.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.avatar {
+  width: 190px;
+  height: 190px;
+  border: 3px solid #060817;
+  border-radius: 50%;
+  background: url("../../../assets/images/avatar.png") no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 175px;
+  z-index: 1;
+  left: 20px;
+}
+
+mat-card {
+  background-color: #060817;
+  font-family: $osw !important;
+  .name {
+    font-size: xx-large;
+  }
+  p {
+    font-size: large;
+    color: bisque;
+  }
+}
+
+mat-drawer {
+  border: none !important;
+  background-color: #060817;
+}
+
+.drawer-container {
+  background-color: #060817;
+  width: 100%;
+  height: 70vh;
+}
+
+.mat-drawer-inner-container {
+  background-color: #060817;
+}
+
+.vertical-menu a {
+  background-color: #060817;
+  color: black;
+  display: block;
+  padding: 12px;
+  height: 100%;
+  text-decoration: none;
+}
+
+.svg {
+  color: darkgray;
+  cursor: pointer;
+  margin-top: 4em;
+}
+
+.active {
+  color: greenyellow;
+}
+
+.svg:hover {
+  color: lightblue;
+  cursor: pointer;
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+#not {
+  border-radius: 0px;
+  background-color: #dda300;
+  text-align: center;
+}
+
+.chip-ang {
+  background-color: transparent;
+  border: 1px solid crimson;
+  color: crimson;
+}
+
+.chip-node {
+  background-color: transparent;
+  border: 1px solid #83ba00;
+  color: #83ba00;
+}
+
+.chip-ts {
+  background-color: transparent;
+  border: 1px solid #2874c0;
+  color: #2874c0;
+}
+
+.chip-rx {
+  background-color: transparent;
+  border: 1px solid #e91d8e;
+  color: #e91d8e;
+}
+
+.chip-git {
+  background-color: transparent;
+  border: 1px solid whitesmoke;
+  color: whitesmoke;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
