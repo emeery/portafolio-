@@ -1,0 +1,42 @@
+@import "src/styles/vars";
+mat-card {
+    background: transparent
+}
+
+.mat-header-cell {
+  background: #060817;
+  
+}
+
+.mat-cell{
+    color: burlywood;
+}
+
+.mat-row:nth-child(even){
+  background-color: #060817;
+}
+
+.mat-row:nth-child(odd){
+  background-color: #000c2a;
+}
+
+table {
+  width: 100%;
+}
+
+h1 {
+  color: darkslateblue;
+  font-family: $osw;
+  font-size: xx-large;
+  text-align: left;
+  animation: animation-name 1s ease-out forwards;
+}
+
+@keyframes animation-name {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}

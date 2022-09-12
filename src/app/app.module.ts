@@ -18,11 +18,6 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
-    PageStartComponent,
-    PageContactComponent,
-    PageAboutComponent,
-    PageCurriculumComponent,
-    ProfileComponent,
   ],
   imports: [
     BrowserModule,

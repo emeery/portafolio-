@@ -38,6 +38,7 @@ export class AuthService {
   comprobarDatosUsuario(): void {
     // inicia cuando carga la aplicación
     const datosAut = this.servicioStorage.obtieneStorage;
+    console.log('datosaut',datosAut)
     if (!datosAut) return;
     const token = datosAut.token;
     if (token) {

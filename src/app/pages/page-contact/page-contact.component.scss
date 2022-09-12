@@ -1,0 +1,46 @@
+@import "src/styles/vars";
+mat-card {
+  background: transparent;
+}
+
+h1 {
+  color: darkslateblue;
+  font-family: $osw;
+  font-size: xx-large;
+  text-align: left;
+  animation: animation-name 1s ease-out forwards;
+}
+
+h3 {
+  color: darkslateblue;
+  font-family: $osw;
+  font-size: xx-large;
+  text-align: left;
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+
+span {
+  color: darkgray;
+}
+
+@keyframes animation-name {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}

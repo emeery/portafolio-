@@ -5,6 +5,12 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './material.module';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../components/shared/shared.module';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { ProfileComponent } from '../pages/profile/profile.component';
+import { PageStartComponent } from '../pages/page-start/page-start.component';
+import { PageAboutComponent } from '../pages/page-about/page-about.component';
+import { PageCurriculumComponent } from '../pages/page-curriculum/page-curriculum.component';
+import { PageContactComponent } from '../pages/page-contact/page-contact.component';
 
 
 
@@ -16,24 +22,22 @@ import { SharedModule } from '../components/shared/shared.module';
     RouterModule,
     MaterialModule,
   ],
-//   providers: [
-//     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-//   ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   declarations: [
-    // AppToolbarComponent,
-    // PageProfileComponent,
-    // PageStartComponent,
-    // PortafolioComponent,
-    // ContactComponent,
-    // AboutComponent
+    ProfileComponent,
+    PageStartComponent,
+    PageAboutComponent,
+    PageCurriculumComponent,
+    PageContactComponent
   ],
   exports: [
-    // AppToolbarComponent,
-    // PageProfileComponent,
-    // PageStartComponent,
-    // PortafolioComponent,
-    // ContactComponent,
-    // AboutComponent
+    ProfileComponent,
+    PageStartComponent,
+    PageAboutComponent,
+    PageCurriculumComponent,
+    PageContactComponent
   ]
 })
 export class CoreModule { }
