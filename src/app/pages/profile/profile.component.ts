@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -6,10 +8,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  registrado= false
+  bar= true 
+  constructor(
+    private servicioAut: AuthService,
+    private snack: MatSnackBar
+  ) {}
 
-  constructor() { }
+  ngOnInit() {
+    this.servicioAut.registroListener()
+    .subscribe(res => {
+      this.registrado = res
+    })
+    this.openSnackBar()
+  }
 
-  ngOnInit(): void {
+  openSnackBar() {
+    this.snack.open(
+      'Bienvenido a mi portafolio!','X',{duration: 5000,panelClass: ['black-snackbar']}
+    )
+  }
+
+  hideBar() {
+    this.bar = !this.bar
   }
 
 }
