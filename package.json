@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "prod": "ng build --prod"
+    "prod": "ng build --prod",
+    "preinstall": "npm install -g angular-cli"
   },
   "private": true,
   "dependencies": {
