@@ -1,4 +1,4 @@
-// @import "src/styles/vars";
+@import "src/styles/vars";
 ul {
   list-style: none;
   padding: 0;
@@ -8,8 +8,8 @@ ul {
 
 a {
   text-decoration: none;
-  // color: $mg;
-  // font-family: $osw;
+  color: $mg;
+  font-family: $osw;
 }
 
 .spacer {
