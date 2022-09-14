@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "prod": "ng build --prod",
-    "preinstall": "npm install -g angular-cli"
+    "preinstall": "npm install -g angular-cli" 
   },
   "private": true,
   "dependencies": {
