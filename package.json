@@ -12,12 +12,12 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "~14.2.2",
-    "@angular/compiler-cli": "^14.0.0",
     "@angular/animations": "^14.0.0",
     "@angular/cdk": "^14.2.1",
+    "@angular/cli": "~14.2.2",
     "@angular/common": "^14.0.0",
     "@angular/compiler": "^14.0.0",
+    "@angular/compiler-cli": "^14.0.0",
     "@angular/core": "^14.2.1",
     "@angular/forms": "^14.0.0",
     "@angular/material": "^14.2.1",
@@ -45,5 +45,5 @@
   "engines": {
     "node": "14.15.1",
     "npm": "8.15.0"
-}
+  }
 }
