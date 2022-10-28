@@ -1,4 +1,4 @@
-// @import "src/styles/vars";
+@import "src/styles/vars";
 mat-card {
     background: transparent
 }
@@ -26,7 +26,7 @@ table {
 
 h1 {
   color: darkslateblue;
-  // font-family: $osw;
+  font-family: $osw;
   font-size: xx-large;
   text-align: left;
   animation: animation-name 1s ease-out forwards;
