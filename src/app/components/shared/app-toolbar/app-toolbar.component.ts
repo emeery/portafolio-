@@ -16,7 +16,7 @@ export class AppToolbarComponent implements OnInit, OnDestroy {
   constructor(private servicioAut: AuthService, private dlg: MatDialog) {}
 
   ngOnInit() {
-    this.icon = '../../../assets/icons/watermelon.png';
+    this.icon = 'assets/icons/watermelon.png';
     this.registrado = this.servicioAut.estaRegistrado();
     this.servicioAut.registroListener().subscribe((res) => {
       this.registrado = res;

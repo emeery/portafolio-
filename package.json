@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "prod": "ng build --prod",
-    "preinstall": "npm install -g angular-cli" 
+    "preinstall": "npm install -g angular-cli"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +25,7 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "angular-cli-ghpages": "^1.0.5",
     "express": "^4.18.1",
     "material-icons": "^1.11.11",
     "path": "^0.12.7",
