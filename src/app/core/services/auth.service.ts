@@ -8,9 +8,6 @@ import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorComponent } from 'app/components/shared/error/error.component';
 
-
-const BACKEND_URL = environment;
-
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private token!: string;
@@ -18,7 +15,6 @@ export class AuthService {
   private registroSubject = new BehaviorSubject<boolean>(false);
   private despedida = false;
   constructor(
-    private http: HttpClient,
     private router: Router,
     private servicioStorage: TokenStorageService,
     private auth: Auth,
@@ -57,7 +53,6 @@ export class AuthService {
   ingreso({ email, password }: any) {
     signInWithEmailAndPassword(this.auth, email, password).then((res: any) => {
       const token: any = res['user']['accessToken'];
-      console.log(token);
       if (token) {
         this.registrado = true;
         this.despedida = true;
@@ -65,6 +60,10 @@ export class AuthService {
         this.registroSubject.next(true);
       }
       this.router.navigate(['/profile/about']);
+    }).catch((e) => {
+      this.dlg.open(ErrorComponent,
+        { data: { title: 'Verifica tis credenciales', subtitle: '' } }
+      );
     })
 
   }
@@ -73,12 +72,12 @@ export class AuthService {
     createUserWithEmailAndPassword(this.auth, email, password).then(res => {
       if (res) {
         this.dlg.open(ErrorComponent,
-          { data: { title: 'usuario creado con exito', subtitle: '' } }
+          { data: { title: 'Usuario creado con exito', subtitle: '' } }
         );
       }
     }).catch((e) => {
       this.dlg.open(ErrorComponent,
-        { data: { title: 'hubo un error', subtitle: 'intenta con otro correo' } }
+        { data: { title: 'Hubo un error', subtitle: 'intenta con otro correo' } }
       );
 
     })
