@@ -1,10 +1,10 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, throwError } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { TokenStorageService } from './token-storage.service';
-import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorComponent } from 'app/components/shared/error/error.component';
 
@@ -53,34 +53,31 @@ export class AuthService {
     }
   }
 
-  ingreso(user: string) {
-    return this.http
-      .post(BACKEND_URL.API_SIGNIN, user)
-      .subscribe({
-        next: (c: any) => {
-          console.log('cc', c)
-          // const token = c['idToken'];
-          // if (token) {
-          //   this.registrado = true;
-          //   this.despedida = true;
-          //   this.servicioStorage.saveToken(token);
-          //   this.registroSubject.next(true);
-          // }
-          // this.router.navigate(['/profile/about']);
-        },
-        error: (e) => this.registroSubject.next(false),
-      });
+
+  ingreso({ email, password }: any) {
+    signInWithEmailAndPassword(this.auth, email, password).then((res: any) => {
+      const token: any = res['user']['accessToken'];
+      console.log(token);
+      if (token) {
+        this.registrado = true;
+        this.despedida = true;
+        this.servicioStorage.saveToken(token);
+        this.registroSubject.next(true);
+      }
+      this.router.navigate(['/profile/about']);
+    })
+
   }
 
   registro({ email, password }: any) {
     createUserWithEmailAndPassword(this.auth, email, password).then(res => {
       if (res) {
-        this.dlg.open(ErrorComponent, 
+        this.dlg.open(ErrorComponent,
           { data: { title: 'usuario creado con exito', subtitle: '' } }
         );
       }
     }).catch((e) => {
-      this.dlg.open(ErrorComponent, 
+      this.dlg.open(ErrorComponent,
         { data: { title: 'hubo un error', subtitle: 'intenta con otro correo' } }
       );
 

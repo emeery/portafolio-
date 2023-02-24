@@ -13,7 +13,6 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError((err: HttpErrorResponse) => {
         let errorMsg = 'ocurrió un error';
-        console.log(err);
         // if(err.error.msg) errorMsg = err.error.msg;
         // if(err.error.message) errorMsg = 'ese correo ya se encuentra registrado';
         // this.dlg.open(ErrorComponent );
