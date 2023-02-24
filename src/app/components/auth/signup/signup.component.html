@@ -1,9 +1,9 @@
 <app-progress-bar *ngIf="bar"></app-progress-bar>
 <div>
-  <form [formGroup]="form" (submit)="ingreso()" method="post">
-    <h1 mat-dialog-title>INGRESAR</h1>
+  <form [formGroup]="form" (submit)="registro()" method="post">
+    <h1 mat-dialog-title>REGISTRATE</h1>
     <mat-dialog-content>
-      <mat-form-field class="example-full-width">
+      <mat-form-field>
         <input formControlName="email" matInput autocomplete="off" style="color: cadetblue;" />
         <mat-placeholder class="placeholder">Ingresa un correo</mat-placeholder>
         <mat-error *ngIf="f['email'].errors?.['required']">

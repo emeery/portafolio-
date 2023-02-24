@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'app/core/services/auth.service';
 import { LoginComponent } from '../../auth/login/login.component';
+import { SignupComponent } from 'app/components/auth/signup/signup.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -24,9 +25,14 @@ export class AppToolbarComponent implements OnInit, OnDestroy {
     });
   }
 
-  autorizar() {
+  ingresar() {
     this.dlg.open(LoginComponent);
   }
+
+  registrar() {
+    this.dlg.open(SignupComponent)
+  }
+  
 
   desloguear() {
     this.servicioAut.cerrarSesion();

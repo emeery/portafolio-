@@ -4,17 +4,17 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from 'app/core/services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class SignupComponent implements OnInit {
   form: FormGroup;
   bar: boolean = false;
   constructor(
     private servicioAut: AuthService,
     private formBuilder: FormBuilder,
-    private dlgRef: MatDialogRef<LoginComponent>
+    private dlgRef: MatDialogRef<SignupComponent>
   ) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -22,20 +22,20 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
   get f() {
     return this.form.controls;
   }
 
-  ingreso() {
+  registro() {
     this.bar = true;
     setTimeout(
-      () => this.servicioAut.ingreso(this.form.value),
+      () => 
+        {this.servicioAut.registro(this.form.value)},
       1500
     );
-    setTimeout(() => this.dlgRef.close(), 1000);
+    this.dlgRef.close();
   }
 
-  
 }

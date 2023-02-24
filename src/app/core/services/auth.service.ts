@@ -2,10 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, map } from 'rxjs';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment';
 import { TokenStorageService } from './token-storage.service';
+import { Auth,createUserWithEmailAndPassword } from '@angular/fire/auth';
 
-const BACKEND_URL = environment.API_URL + '/auth/';
+const  BACKEND_URL = environment;
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -16,7 +17,8 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private servicioStorage: TokenStorageService
+    private servicioStorage: TokenStorageService,
+    private auth: Auth
   ) {}
 
   obtieneToken() {
@@ -38,7 +40,6 @@ export class AuthService {
   comprobarDatosUsuario(): void {
     // inicia cuando carga la aplicación
     const datosAut = this.servicioStorage.obtieneStorage;
-    console.log('datosaut',datosAut)
     if (!datosAut) return;
     const token = datosAut.token;
     if (token) {
@@ -48,28 +49,29 @@ export class AuthService {
     }
   }
 
-  iniciarSesion(user: string) {
+  ingreso(user: string) {
+    console.log('usrr', user);
     return this.http
-      .post(BACKEND_URL + 'signin', user)
-      .pipe(
-        map((user) => {
-          return user;
-        })
-      )
+      .post(BACKEND_URL.API_SIGNIN, user)
       .subscribe({
         next: (c: any) => {
           console.log('cc',c)
-          const token = c['token'];
-          if (token) {
-            this.registrado = true;
-            this.despedida = true;
-            this.servicioStorage.saveToken(token);
-            this.registroSubject.next(true);
-          }
-          this.router.navigate(['/profile/about']);
+          // const token = c['idToken'];
+          // if (token) {
+          //   this.registrado = true;
+          //   this.despedida = true;
+          //   this.servicioStorage.saveToken(token);
+          //   this.registroSubject.next(true);
+          // }
+          // this.router.navigate(['/profile/about']);
         },
         error: (e) => this.registroSubject.next(false),
       });
+  }
+
+  registro({email, password}: any) {
+    return createUserWithEmailAndPassword(this.auth, email, password)
+    
   }
 
   cerrarSesion(): void {

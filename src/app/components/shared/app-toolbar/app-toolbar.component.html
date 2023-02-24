@@ -7,7 +7,10 @@
     <span class="spacer"></span>
     <ul>
       <li *ngIf="!registrado">
-        <a (click)="autorizar()" mat-button> ENTRAR </a>
+        <a (click)="registrar()" mat-button> REGISTRARSE </a>
+      </li>
+      <li *ngIf="!registrado">
+        <a (click)="ingresar()" mat-button> ENTRAR </a>
       </li>
       <li *ngIf="registrado">
         <a (click)="desloguear()" mat-button> SALIR </a>
