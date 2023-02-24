@@ -16,8 +16,8 @@ export class ErrorInterceptor implements HttpInterceptor {
         console.log(err);
         // if(err.error.msg) errorMsg = err.error.msg;
         // if(err.error.message) errorMsg = 'ese correo ya se encuentra registrado';
-        // this.dlg.open(ErrorComponent, {data: {msg: errorMsg} });
-        return throwError(err);
+        // this.dlg.open(ErrorComponent );
+        return throwError(() => err);
       })
     );
   }

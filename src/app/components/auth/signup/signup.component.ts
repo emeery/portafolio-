@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   get f() {
     return this.form.controls;
@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
     this.bar = true;
     setTimeout(
       () => 
-        {this.servicioAut.registro(this.form.value)},
+        this.servicioAut.registro(this.form.value),
       1500
     );
     this.dlgRef.close();

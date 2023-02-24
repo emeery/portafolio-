@@ -1,12 +1,15 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, map } from 'rxjs';
+import { BehaviorSubject, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { TokenStorageService } from './token-storage.service';
-import { Auth,createUserWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorComponent } from 'app/components/shared/error/error.component';
 
-const  BACKEND_URL = environment;
+
+const BACKEND_URL = environment;
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -18,8 +21,9 @@ export class AuthService {
     private http: HttpClient,
     private router: Router,
     private servicioStorage: TokenStorageService,
-    private auth: Auth
-  ) {}
+    private auth: Auth,
+    private dlg: MatDialog
+  ) { }
 
   obtieneToken() {
     return this.token;
@@ -55,7 +59,7 @@ export class AuthService {
       .post(BACKEND_URL.API_SIGNIN, user)
       .subscribe({
         next: (c: any) => {
-          console.log('cc',c)
+          console.log('cc', c)
           // const token = c['idToken'];
           // if (token) {
           //   this.registrado = true;
@@ -69,9 +73,38 @@ export class AuthService {
       });
   }
 
-  registro({email, password}: any) {
-    return createUserWithEmailAndPassword(this.auth, email, password)
-    
+  registro({ email, password }: any) {
+    createUserWithEmailAndPassword(this.auth, email, password).then(res => {
+      if (res) {
+        this.dlg.open(ErrorComponent, 
+          { data: { title: 'usuario creado con exito', subtitle: '' } }
+        );
+      }
+    }).catch((e) => {
+      this.dlg.open(ErrorComponent, 
+        { data: { title: 'hubo un error', subtitle: 'intenta con otro correo' } }
+      );
+
+    })
+
+  }
+
+  errorHandler(error: any) {
+    console.log(error);
+    if (error.error instanceof ErrorEvent) {
+
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    // return an observable with a user-facing error message
+    return throwError(
+      'Something bad happened; please try again later.');
   }
 
   cerrarSesion(): void {
