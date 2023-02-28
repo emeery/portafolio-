@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { TokenStorageService } from './token-storage.service';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, AuthCredential, OAuthCredential } from '@angular/fire/auth';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorComponent } from 'app/components/shared/error/error.component';
 
@@ -51,31 +51,39 @@ export class AuthService {
 
 
   ingreso({ email, password }: any) {
-    signInWithEmailAndPassword(this.auth, email, password).then((res: any) => {
-      const token: any = res['user']['accessToken'];
+    // signInWithEmailAndPassword(this.auth, email, password).then((res: any) => {
+    //   const token: any = res['user']['accessToken'];
+    //   if (token) {
+    //     this.registrado = true;
+    //     this.despedida = true;
+    //     this.servicioStorage.saveToken(token);
+    //     this.registroSubject.next(true);
+    //   }
+    //   this.router.navigate(['/profile/about']);
+    // }).catch((e) => {
+    //   this.dlg.open(ErrorComponent,
+    //     { data: { title: 'Verifica tus credenciales', subtitle: '' } }
+    //   );
+    // })
+
+  }
+
+  registro({ email, password }: any) {
+    createUserWithEmailAndPassword(this.auth, email, password).then((res: any) => {
+      let token = res['user']['accessToken']
+      console.log(token);
       if (token) {
+       
         this.registrado = true;
         this.despedida = true;
         this.servicioStorage.saveToken(token);
         this.registroSubject.next(true);
       }
       this.router.navigate(['/profile/about']);
-    }).catch((e) => {
-      this.dlg.open(ErrorComponent,
-        { data: { title: 'Verifica tis credenciales', subtitle: '' } }
-      );
-    })
 
-  }
-
-  registro({ email, password }: any) {
-    createUserWithEmailAndPassword(this.auth, email, password).then(res => {
-      if (res) {
-        this.dlg.open(ErrorComponent,
-          { data: { title: 'Usuario creado con exito', subtitle: '' } }
-        );
-      }
+      
     }).catch((e) => {
+      console.log(e)
       this.dlg.open(ErrorComponent,
         { data: { title: 'Hubo un error', subtitle: 'intenta con otro correo' } }
       );

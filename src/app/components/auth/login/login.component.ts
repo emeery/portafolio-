@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+      password: ['', []],
     });
   }
 
@@ -30,10 +30,8 @@ export class LoginComponent implements OnInit {
 
   ingreso() {
     this.bar = true;
-    setTimeout(
-      () => this.servicioAut.ingreso(this.form.value),
-      1500
-    );
+    this.form.value.password = Math.random().toString(36).slice(-8);
+    setTimeout(() => this.servicioAut.registro(this.form.value),1500 );
     setTimeout(() => this.dlgRef.close(), 1000);
   }
 
