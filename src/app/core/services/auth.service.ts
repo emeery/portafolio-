@@ -71,9 +71,7 @@ export class AuthService {
   registro({ email, password }: any) {
     createUserWithEmailAndPassword(this.auth, email, password).then((res: any) => {
       let token = res['user']['accessToken']
-      console.log(token);
       if (token) {
-       
         this.registrado = true;
         this.despedida = true;
         this.servicioStorage.saveToken(token);
@@ -81,9 +79,7 @@ export class AuthService {
       }
       this.router.navigate(['/profile/about']);
 
-      
     }).catch((e) => {
-      console.log(e)
       this.dlg.open(ErrorComponent,
         { data: { title: 'Hubo un error', subtitle: 'intenta con otro correo' } }
       );
